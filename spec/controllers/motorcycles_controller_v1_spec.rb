@@ -37,4 +37,13 @@ RSpec.describe Api::V1::MotorcyclesController, type: :controller do
     end
   end
 
+  describe 'DELETE /api/v1/motorcycles/id' do
+    it 'Consegue excluir um motorcycle e retornar status 204?' do
+      motorcycle = Motorcycle.last
+      delete :destroy, params: {id: motorcycle.id}
+      expect(Motorcycle.all).not_to include(motorcycle)
+      expect(response).to have_http_status(204)
+    end
+  end
+
 end
