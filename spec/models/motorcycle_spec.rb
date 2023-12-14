@@ -12,7 +12,7 @@ RSpec.describe Motorcycle, type: :model do
     end
 
     it 'category consegue ser preenchido?' do
-      @motorcycle.category = ''
+      @motorcycle.category = 'estradeira'
       expect(@motorcycle.category).to eq('estradeira')
     end
 
