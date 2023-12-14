@@ -1,6 +1,6 @@
 class Api::V1::MotorcyclesController < ApplicationController
 
-  before_action :set_motorcycle, only: %i[show] # show update destroy
+  before_action :set_motorcycle, only: %i[show update] # show update destroy
 
   def index
     @motorcycles = Motorcycle.all 
@@ -15,6 +15,14 @@ class Api::V1::MotorcyclesController < ApplicationController
     @motorcycle = Motorcycle.new(motorcycle_params)
     if @motorcycle.save
       render json: @motorcycle, status: :created, location: api_v1_motorcycle_url(@motorcycle)
+    else
+      render json: @motorcycle.errors, status: :unprocessable_entity
+    end
+  end
+
+  def update
+    if @motorcycle.update(motorcycle_params)
+      render json: @motorcycle
     else
       render json: @motorcycle.errors, status: :unprocessable_entity
     end
