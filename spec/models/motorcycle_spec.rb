@@ -7,7 +7,7 @@ RSpec.describe Motorcycle, type: :model do
   describe 'Testes de preenchimento dos campo do model Motorcycle' do
 
     it 'name consegue ser preenchido?' do
-      @motorcycle.name = ''
+      @motorcycle.name = 'harley davidson'
       expect(@motorcycle.name).to eq('harley davidson')
     end
 
