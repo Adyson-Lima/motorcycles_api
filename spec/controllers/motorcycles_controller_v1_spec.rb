@@ -28,4 +28,13 @@ RSpec.describe Api::V1::MotorcyclesController, type: :controller do
     end
   end
 
+  describe 'PATCH /api/v1/motorcycles/id' do
+    it 'Consegue atualizar um motorcycle e retornar status 200?' do
+      motorcycle = Motorcycle.last
+      patch :update, params: {motorcycle: {name: 'Shadow', category: 'estradeira'},id: motorcycle.id}
+      expect(response.body).to include_json(name: 'Shadow')
+      expect(response).to have_http_status(200)
+    end
+  end
+
 end
