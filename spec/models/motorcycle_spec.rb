@@ -21,8 +21,8 @@ RSpec.describe Motorcycle, type: :model do
   describe 'Testes de validacao dos campo do model Motorcycle' do
 
     it 'objeto motorcycle valido com campos obrigatorios preenchidos?' do
-      @motorcycle.name = ''
-      @motorcycle.category = ''
+      @motorcycle.name = 'cg'
+      @motorcycle.category = 'moto para trabalho'
       expect(@motorcycle).to be_valid
     end
 
