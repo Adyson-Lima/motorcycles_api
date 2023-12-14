@@ -1,10 +1,14 @@
 class Api::V1::MotorcyclesController < ApplicationController
 
-  #before_action :set_motorcycle, only: %i[] # show update destroy
+  before_action :set_motorcycle, only: %i[show] # show update destroy
 
   def index
     @motorcycles = Motorcycle.all 
     render json: @motorcycles
+  end
+
+  def show
+    render json: @motorcycle
   end
 
 private
