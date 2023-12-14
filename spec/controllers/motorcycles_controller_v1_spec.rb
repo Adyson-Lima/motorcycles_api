@@ -20,4 +20,12 @@ RSpec.describe Api::V1::MotorcyclesController, type: :controller do
     end
   end
 
+  describe 'POST /api/v1/motorcycles' do
+    it 'Consegue criar uma motorcycle e retornar status 201?' do
+      post :create, params: {motorcycle: {name: 'fan', category: 'moto de trabalho'},format: :json}
+      expect(response.body).to include_json(name: 'fan')
+      expect(response).to have_http_status(201)
+    end
+  end
+
 end
