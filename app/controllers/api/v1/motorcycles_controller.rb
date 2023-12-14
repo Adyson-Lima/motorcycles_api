@@ -11,6 +11,15 @@ class Api::V1::MotorcyclesController < ApplicationController
     render json: @motorcycle
   end
 
+  def create
+    @motorcycle = Motorcycle.new(motorcycle_params)
+    if @motorcycle.save
+      render json: @motorcycle, status: :created, location: api_v1_motorcycle_url(@motorcycle)
+    else
+      render json: @motorcycle.errors, status: :unprocessable_entity
+    end
+  end
+
 private
 
 def set_motorcycle
