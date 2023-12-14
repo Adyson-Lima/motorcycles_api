@@ -26,6 +26,11 @@ RSpec.describe Motorcycle, type: :model do
       expect(@motorcycle).to be_valid
     end
 
+    it 'objeto motorcycle invalido com campos obrigatorios não preenchidos?' do
+      motorcycle = Motorcycle.new
+      expect(motorcycle).to be_valid
+    end
+
   end
 
 end
